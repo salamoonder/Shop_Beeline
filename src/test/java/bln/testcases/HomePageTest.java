@@ -27,31 +27,31 @@ public class HomePageTest extends TestBase{
     }
     @BeforeTest
     public void setUp(){
-        initialization();
+        initialization();   //инициализация драйвера
         homePage = new HomePage();
         smartPhonePage = new SmartPhonePage();
 
     }
     @Test(priority = 1)
     public void testCase1(){
-        homePage.checkHomePageUrl();
-        homePage.clickMenuCat();
-        smartPhonePage.checkSmartPhonePageUrl();
-        smartPhonePage.clickFinterModelSamsung();
-        try {
+        homePage.checkHomePageUrl(); //проверка ссылки домашней страницы
+        homePage.clickMenuCat();    //нажатие на Смартфоны
+        smartPhonePage.checkSmartPhonePageUrl();    //проверка ссылки станицы Смартфоны
+        smartPhonePage.clickFinterModelSamsung();   //нажатие на фильтр
+        try {                                       //ждем пока загрузится
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        smartPhonePage.clickFilterBtn();
+        smartPhonePage.clickFilterBtn();            //нажатие на фильтр
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        smartPhonePage.getphone1(testPhone1);
-        smartPhonePage.getphone2(testPhone2);
+        smartPhonePage.getphone1(testPhone1);       //проверка наличии
+        smartPhonePage.getphone2(testPhone2);       //проверка наличии и цены
 
     }
 
@@ -60,8 +60,8 @@ public class HomePageTest extends TestBase{
         homePage.checkHomePageUrl();
         homePage.clickMenuCat();
         smartPhonePage.checkSmartPhonePageUrl();
-        smartPhonePage.clickFinterModelXiaomi();
-        smartPhonePage.getCountXiaomi(countXiaomi);
+        smartPhonePage.clickFinterModelXiaomi();    //нажатие на фильтр
+        smartPhonePage.getCountXiaomi(countXiaomi); //проверка количества товаров
     }
 
     @Test(priority = 3)
@@ -75,12 +75,12 @@ public class HomePageTest extends TestBase{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        smartPhonePage.getCount500(count500);
-        smartPhonePage.getphone3(testPhone3);
-        smartPhonePage.getphone4(testPhone4);
+        smartPhonePage.getCount500(count500);       //проверка количества товаров
+        smartPhonePage.getphone3(testPhone3);       //проверка наличии
+        smartPhonePage.getphone4(testPhone4);       //проверка наличии и цены
     }
     @AfterMethod
     public void tearDown(){
-        driver.quit();
+        driver.quit();                              //закрываем браузер
     }
 }
